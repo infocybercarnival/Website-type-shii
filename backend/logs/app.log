@@ -1,0 +1,122 @@
+2026-08-11 09:20:01,383 INFO email EMAIL_DEV_MODE — not sending. to=leader@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 912976
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:20:52,481 INFO email EMAIL_DEV_MODE — not sending. to=leader_1786440052@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 624696
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:20:53,704 INFO email EMAIL_DEV_MODE — not sending. to=leader_1786440052@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CCAMZR5EUGC3P2A7
+Username: cc3a9609fc
+Temporary password: 5olWFKCfeD
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:20:53,707 INFO auth account created user=42219154-278d-47e6-8095-deae9e68cc93 email=leader_1786440052@test.com
+2026-08-11 09:21:11,632 INFO email EMAIL_DEV_MODE — not sending. to=leader_1786440071@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 810073
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:21:12,847 INFO email EMAIL_DEV_MODE — not sending. to=leader_1786440071@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CCPT6JL3USS9E8NU
+Username: ccf9f40d18
+Temporary password: 5P4un4TRAn
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:21:12,850 INFO auth account created user=ecac38de-9b6e-4dde-b824-cb9addeae21a email=leader_1786440071@test.com
+2026-08-11 09:21:13,984 INFO email EMAIL_DEV_MODE — not sending. to=member_1786440071@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 101109
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:21:15,219 INFO email EMAIL_DEV_MODE — not sending. to=member_1786440071@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CCXCZCRUKL4N4HHA
+Username: cc27b03ebd
+Temporary password: gc6wH7O115
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:21:15,220 INFO auth account created user=b26c29fa-99ce-4e2f-a392-e858df8f3771 email=member_1786440071@test.com
+2026-08-11 09:21:37,565 INFO email EMAIL_DEV_MODE — not sending. to=leader_1786440097@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 987273
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:21:38,786 INFO email EMAIL_DEV_MODE — not sending. to=leader_1786440097@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CC7JPL6UPFK6WH6T
+Username: ccf39aa723
+Temporary password: 3mAiIUReEO
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:21:38,788 INFO auth account created user=35033f5c-41c2-495a-af52-17bb63a24ab7 email=leader_1786440097@test.com
+2026-08-11 09:21:39,911 INFO email EMAIL_DEV_MODE — not sending. to=member_1786440097@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 895901
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:21:41,128 INFO email EMAIL_DEV_MODE — not sending. to=member_1786440097@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CC7YHADDGFLVNY4B
+Username: cc384b146c
+Temporary password: 5uKYTQGOqi
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:21:41,130 INFO auth account created user=c090ca79-5c1e-492f-a18b-e4fd4b9b7415 email=member_1786440097@test.com
+2026-08-11 09:21:42,332 INFO registration registration created id=ff9a4208-041e-400d-9768-4afe1f986b29 event=1a84cbb7-3836-46a2-acea-7d8692a06729 leader=35033f5c-41c2-495a-af52-17bb63a24ab7
+2026-08-11 09:22:10,785 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-11 09:22:23,787 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-11 09:22:44,655 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-11 09:23:05,755 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-11 09:23:24,265 INFO email EMAIL_DEV_MODE — not sending. to=teama_1786440204074684055@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 502137
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:23:24,999 INFO email EMAIL_DEV_MODE — not sending. to=teama_1786440204074684055@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CCEK5Q8JTMBDHDUF
+Username: cc6fa297e5
+Temporary password: vNqzvQ5g1K
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:23:25,003 INFO auth account created user=9b3b3be7-64d2-4b86-a4fb-8e4883f0d133 email=teama_1786440204074684055@test.com
+2026-08-11 09:23:25,760 INFO email EMAIL_DEV_MODE — not sending. to=teamb_1786440205648276537@test.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 698518
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 09:23:26,494 INFO email EMAIL_DEV_MODE — not sending. to=teamb_1786440205648276537@test.com subject='Your CyberCarnival account is ready'
+You're verified! Here are your CyberCarnival credentials:
+
+CyberCarnival Token: CC6S2W695XLXDC36
+Username: cc1e5aaf59
+Temporary password: MArXg373VN
+
+Share your token with teammates so they can add you to their team when registering for an event. You'll be asked to set a new password on first login.
+2026-08-11 09:23:26,496 INFO auth account created user=533ebc2c-525f-419a-b7ad-59a032f2e665 email=teamb_1786440205648276537@test.com
+2026-08-11 09:23:27,170 INFO registration registration created id=54c39442-7491-4d67-8052-1e62e955c7b7 event=a99b1156-f176-4c19-a074-96317008a14f leader=9b3b3be7-64d2-4b86-a4fb-8e4883f0d133
+2026-08-11 09:28:38,823 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-11 18:49:12,637 INFO email EMAIL_DEV_MODE — not sending. to=pb3110@srmist.edu.in subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 264718
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 18:51:02,177 INFO email EMAIL_DEV_MODE — not sending. to=pranavbalakrishnan2nd@gmail.com subject='Your CyberCarnival verification code'
+Your CyberCarnival OTP is: 297272
+
+It expires in 10 minutes. If you didn't request this, you can ignore this email.
+2026-08-11 18:54:42,239 INFO email email sent to=pranzzzz1@gmail.com subject='Your CyberCarnival verification code'
+2026-08-11 18:55:25,384 INFO email email sent to=pranzzzz1@gmail.com subject='Your CyberCarnival account is ready'
+2026-08-11 18:55:25,394 INFO auth account created user=4a5d0d54-36c2-4edd-a08e-2026edcaa91f email=pranzzzz1@gmail.com
+2026-08-11 19:08:23,179 INFO registration registration created id=a8028886-9d5d-4d0f-8838-f6e7a58dadb9 event=07d254f9-470d-408d-865c-78318fc31e8d leader=4a5d0d54-36c2-4edd-a08e-2026edcaa91f
+2026-08-11 19:08:43,570 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-12 13:56:32,479 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-12 14:35:48,100 INFO admin_auth login success user=admin ip=127.0.0.1
+2026-08-12 22:04:41,545 INFO email email sent to=pb3110@srmist.edu.in subject='Your CyberCarnival verification code'
+2026-08-12 22:05:30,317 INFO email email sent to=pb3110@srmist.edu.in subject='Your CyberCarnival account is ready'
+2026-08-12 22:05:30,323 INFO auth account created user=a3bf311f-95f7-46b1-b7ac-edea6a24cc00 email=pb3110@srmist.edu.in
+2026-08-12 22:07:48,612 INFO registration registration created id=06ff2399-d1d9-43e1-96c2-36099ae808e2 event=133649d6-9448-47f0-b7b2-fdf11bc4d454 leader=a3bf311f-95f7-46b1-b7ac-edea6a24cc00
+2026-08-12 22:08:13,129 INFO admin_auth login success user=admin ip=127.0.0.1
