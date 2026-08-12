@@ -51,7 +51,7 @@ export default function RootLayout({
       <body className="antialiased font-sans">
         <ParticleWaveField className="fixed z-0" opacity={0.5} />
         <div className="relative z-10">{children}</div>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Analytics />
       </body>
     </html>
   )
