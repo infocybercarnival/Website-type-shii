@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd frontend && pnpm install --frozen-lockfile && pnpm build",
+  "buildCommand": "corepack pnpm --version && cd frontend && corepack pnpm build",
   "outputDirectory": "frontend/out",
-  "installCommand": "cd frontend && pnpm install --frozen-lockfile",
+  "installCommand": "cd frontend && corepack pnpm install --frozen-lockfile",
   "functions": {
     "api/index.py": {
       "excludeFiles": "{frontend/**,backend/static/**,backend/logs/**,backend/data/**,**/__pycache__/**}"
