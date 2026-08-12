@@ -1,0 +1,25 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+backend/venv/
+.venv/
+
+# Runtime data and logs
+backend/logs/
+backend/data/login_attempts.json
+backend/data/uploads/
+
+# Frontend/build output
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# macOS/editor files
+.DS_Store
+.vscode/
