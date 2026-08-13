@@ -11,7 +11,7 @@ from models import Event
 def list_events(include_inactive: bool = False) -> list:
     q = Event.query
     if not include_inactive:
-        q = q.filter_by(active=True)
+        q = q.filter_by(active=1)
     return q.order_by(Event.created_at.asc()).all()
 
 
@@ -68,7 +68,7 @@ def set_event_active(event_id: str, active: bool) -> bool:
     event = get_event(event_id)
     if not event:
         return False
-    event.active = active
+    event.active = 1 if active else 0
     db.session.commit()
     return True
 

@@ -30,7 +30,7 @@ LOG_DIR = BASE_DIR / "logs"
 DATA_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
 
-# events/registrations/admins/audit_log now live in MySQL (see models.py) —
+# events/registrations/admins/audit_log now live in Supabase PostgreSQL (see models.py) —
 # only login_attempts stays on the old JSON store (small, ephemeral, no need
 # for a table).
 LOGIN_ATTEMPTS_FILE = DATA_DIR / "login_attempts.json"
@@ -41,17 +41,13 @@ ALLOWED_ORIGINS = [
 
 RATELIMIT_STORAGE_URI = os.environ.get("RATELIMIT_STORAGE_URI", "memory://")
 
-# --- Database (MySQL) ---------------------------------------------------------
-# Individual pieces so the .env stays readable; assembled into the SQLAlchemy URI below.
-DB_HOST = os.environ.get("DB_HOST", "localhost")
-DB_PORT = os.environ.get("DB_PORT", "3306")
-DB_NAME = os.environ.get("DB_NAME", "cybercarnival")
-DB_USER = os.environ.get("DB_USER", "root")
-DB_PASSWORD = os.environ.get("DB_PASSWORD", "")
-
-SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") or (
-    f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8mb4"
-)
+SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", "").strip()
+if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg://" + SQLALCHEMY_DATABASE_URI[len("postgres://"):]
+elif SQLALCHEMY_DATABASE_URI.startswith("postgresql://"):
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg://" + SQLALCHEMY_DATABASE_URI[len("postgresql://"):]
+if not SQLALCHEMY_DATABASE_URI and IS_PRODUCTION:
+    raise RuntimeError("DATABASE_URL is required in production")
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # --- Email (OTP delivery) -----------------------------------------------------
@@ -91,7 +87,7 @@ MAX_CONTENT_LENGTH = 6 * 1024 * 1024  # 6 MB
 
 SESSION_COOKIE_SECURE = IS_PRODUCTION
 SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SAMESITE = "None" if IS_PRODUCTION else "Lax"
 PERMANENT_SESSION_LIFETIME_SECONDS = 60 * 60 * 4  # 4 hours
 
 # Login brute-force protection

@@ -12,7 +12,7 @@ export function FinalCta() {
   return (
     <section
       id="register"
-      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden py-32"
+      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden bg-background py-32"
     >
       {/* the gateway returns — the user stands before the entrance again */}
       <GatewayCanvas

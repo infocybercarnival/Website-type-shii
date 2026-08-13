@@ -1,4 +1,5 @@
 import { Reveal } from './reveal'
+import Image from 'next/image'
 
 export function Intro() {
   return (
@@ -18,6 +19,17 @@ export function Intro() {
       </Reveal>
 
       <div className="mt-16 grid gap-10 lg:grid-cols-12">
+        <Reveal delay={150} className="lg:col-span-5 lg:col-start-1">
+          <div className="relative aspect-[954/536] w-full overflow-hidden rounded-sm border border-border">
+            <Image
+              src="/assets/branding/cybercarnival-poster.png"
+              alt="CyberCarnival 2026 event poster"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
+
         <Reveal delay={200} className="lg:col-span-5 lg:col-start-7">
           <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
             CyberCarnival is SRM Ramapuram&apos;s flagship cybersecurity

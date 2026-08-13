@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 // Section links use the `/#id` form (not bare `#id`) so they resolve
 // correctly from any route, not just when already on the homepage —
@@ -40,8 +41,15 @@ export function Navbar() {
         aria-label="Main navigation"
         className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10"
       >
-        <Link href="/#home" className="font-mono text-sm tracking-[0.3em] text-foreground">
-          CYBERCARNIVAL
+        <Link href="/#home" className="flex items-center" aria-label="CyberCarnival — home">
+          <Image
+            src="/assets/branding/cybercarnival-logo-no-bg.png"
+            alt="CyberCarnival"
+            width={160}
+            height={89}
+            priority
+            className="h-11 w-auto lg:h-14"
+          />
         </Link>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -58,6 +66,13 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4">
+          <Link
+            href="/login"
+            className="hidden font-mono text-[11px] tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground lg:inline-flex"
+          >
+            LOGIN
+          </Link>
+
           <Link
             href="/register"
             className="hidden items-center gap-2 border border-primary/60 px-5 py-2 font-mono text-[11px] tracking-[0.2em] text-foreground transition-all hover:bg-primary hover:text-primary-foreground lg:inline-flex"
@@ -98,9 +113,16 @@ export function Navbar() {
             ))}
             <li className="pt-4">
               <Link
+                href="/login"
+                onClick={() => setOpen(false)}
+                className="block py-3 font-mono text-sm tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              >
+                LOGIN
+              </Link>
+              <Link
                 href="/register"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-2 border border-primary/60 px-5 py-3 font-mono text-xs tracking-[0.2em] text-foreground"
+                className="mt-2 inline-flex items-center gap-2 border border-primary/60 px-5 py-3 font-mono text-xs tracking-[0.2em] text-foreground"
               >
                 REGISTER <span aria-hidden="true">→</span>
               </Link>

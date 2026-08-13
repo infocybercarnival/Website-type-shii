@@ -2,7 +2,7 @@
 // .env.development points at the standalone backend on :5000. In production
 // this is unset on purpose — Flask serves the built frontend and the API
 // from the same origin, so relative paths ('') just work, no CORS needed.
-const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://website-type-shii-3.onrender.com'
 
 // Every call that carries the participant session cookie needs
 // credentials: 'include' — otherwise the browser won't send/accept it
