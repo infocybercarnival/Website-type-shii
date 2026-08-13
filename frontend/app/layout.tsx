@@ -7,6 +7,7 @@ import '@fontsource/geist-mono/400.css'
 import '@fontsource/geist-mono/500.css'
 import '@fontsource/geist-mono/700.css'
 import './globals.css'
+import { BackgroundField } from '@/components/background-field'
 
 export const metadata: Metadata = {
   title: 'CyberCarnival 2026 — SRM Ramapuram',
@@ -48,6 +49,7 @@ export default function RootLayout({
       className="bg-background"
     >
       <body className="antialiased font-sans">
+        <BackgroundField />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

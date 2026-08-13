@@ -36,7 +36,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-svh min-h-[640px] w-full items-center justify-center overflow-hidden"
+      className="relative flex h-svh min-h-[640px] w-full items-center justify-center overflow-hidden bg-background"
     >
       {/* BACKGROUND + MIDGROUND — the architectural gateway environment.
           It occupies the edges and recedes into depth; the center stays open. */}
