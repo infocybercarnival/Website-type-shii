@@ -52,11 +52,15 @@ def verify_otp():
         return jsonify({"error": "validation failed", "fields": e.errors}), 422
 
     try:
-        user = otp_service.verify_otp_and_create_user(clean["email"], clean["otp"])
-    except otp_service.ExpiredOtpError:
-        return jsonify({"error": "OTP expired — request a new one"}), 410
-    except otp_service.TooManyAttemptsError:
-        return jsonify({"error": "too many incorrect attempts — request a new OTP"}), 429
+        otp_service.request_otp(clean["email"])
+    except otp_service.EmailAlreadyRegisteredError:
+        return jsonify({"error": "an account already exists for this email"}), 409
+    except otp_service.CooldownError:
+        return jsonify({"error": "an OTP was just sent — wait a minute before requesting another"}), 429
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
     except otp_service.InvalidOtpError:
         return jsonify({"error": "incorrect OTP"}), 422
     except otp_service.EmailAlreadyRegisteredError:
