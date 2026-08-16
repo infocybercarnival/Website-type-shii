@@ -108,6 +108,4 @@ def create_app() -> Flask:
 app = create_app()
 
 if __name__ == "__main__":
-    # Dev server only. In production run behind gunicorn + a reverse proxy
-    # (nginx/Caddy) terminating TLS. See README.md.
     app.run(host="127.0.0.1", port=5000, debug=not config.IS_PRODUCTION)
