@@ -59,8 +59,11 @@ def verify_otp():
         return jsonify({"error": "an OTP was just sent — wait a minute before requesting another"}), 429
     except Exception as e:
         import traceback
+        print("===== OTP ERROR =====")
+        print(repr(e))
         traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+        print("=====================")
+        return jsonify({"error": repr(e)}), 500
     except otp_service.InvalidOtpError:
         return jsonify({"error": "incorrect OTP"}), 422
     except otp_service.EmailAlreadyRegisteredError:
