@@ -100,3 +100,12 @@
     transition: none;
   }
 }
+
+@keyframes sheen-sweep {
+  0% {
+    transform: translateX(-130%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(230%) skewX(-20deg);
+  }
+}

@@ -36,7 +36,7 @@ export function Events() {
                 <div
                   aria-hidden="true"
                   className={`pointer-events-none absolute inset-0 -z-20 transition-opacity duration-500 ${
-                    isActive ? 'opacity-25' : 'opacity-0'
+                    isActive ? 'opacity-70' : 'opacity-0'
                   }`}
                 >
                   <Image
@@ -46,7 +46,7 @@ export function Events() {
                     className="object-cover"
                     sizes="100vw"
                   />
-                  <div className="absolute inset-0 bg-background/40" />
+                  <div className="absolute inset-0 bg-background/15" />
                 </div>
 
                 <a
