@@ -12,11 +12,11 @@
 | Severity | Total | Open | Fixed |
 |----------|-------|------|-------|
 | 🔴 **CRITICAL** | 2 | 1 | 1 |
-| 🟠 **HIGH** | 4 | 2 | 2 |
+| 🟠 **HIGH** | 4 | 1 | 3 |
 | 🟡 **MEDIUM** | 6 | 6 | 0 |
 | 🔵 **LOW / Informational** | 5 | 0 | 5 |
 
-The codebase demonstrates **good security fundamentals** — proper password hashing (scrypt), CSRF protection, rate limiting, input validation, XSS escaping in admin JS, and security headers. Two critical and two high-severity issues have been remediated. Remaining items should be addressed before production launch.
+The codebase demonstrates **good security fundamentals** — proper password hashing (scrypt), CSRF protection, rate limiting, input validation, XSS escaping in admin JS, and security headers. Three high-severity issues and one critical issue have been remediated. Remaining items should be addressed before production launch.
 
 ---
 
@@ -64,23 +64,19 @@ user = otp_service.verify_otp_and_create_user(clean["email"], clean["otp"])
 
 ---
 
-### H2 — Debug Logging Leaks Database Credentials
-**File:** `backend/config.py` lines ~55–63
+### H2 — Debug Logging Leaks Database Credentials ✅ FIXED
+**File:** `backend/config.py`  
+**Fixed:** 2026-08-19 — Debug `print()` statements removed. The `_db_debug` variable is still parsed but no longer output to stdout.
 
 ```python
+# Before (leaked to stdout):
 print("=== DB DEBUG ===")
 print("DB scheme:", _db_debug.scheme)
 print("DB host:", _db_debug.hostname)
-print("DB port:", _db_debug.port)
-print("DB user:", _db_debug.username)
-print("DB name:", _db_debug.path)
-print("DB password present:", bool(_db_debug.password))
-print("================")
+...
+
+# After: no print statements — _db_debug unused, can be cleaned up later.
 ```
-
-This prints database connection details to stdout on every startup. In production, this leaks to logs.
-
-**Fix:** Wrap in `if not IS_PRODUCTION:` or remove entirely.
 
 ---
 
@@ -235,7 +231,7 @@ The codebase has several strong security practices:
 | 🔴 P0 | Purge `.env.render` from git history | DevOps | ⏳ Pending |
 | 🔴 P0 | Fix `verify_otp` to call `verify_otp_and_create_user` | Backend | ⏳ Pending |
 | 🟠 P1 | ~~Update all Python dependencies to patched versions~~ | Backend | ✅ Done |
-| 🟠 P1 | Remove debug DB logging from `config.py` | Backend | ⏳ Pending |
+| 🟠 P1 | ~~Remove debug DB logging from `config.py`~~ | Backend | ✅ Done |
 | 🟠 P1 | Replace `repr(e)` with generic error in auth routes | Backend | ⏳ Pending |
 | 🟠 P1 | ~~Fix host binding to use 127.0.0.1 in development~~ | Backend | ✅ Done |
 | 🟡 P2 | Increase admin password minimum to 12 chars | Backend | ⏳ Pending |
@@ -261,3 +257,4 @@ The codebase has several strong security practices:
 | 2026-08-19 | Deleted `backend/.env.render` and `backend/.env.example` from repo | C1 (partial) |
 | 2026-08-19 | Updated `backend/requirements.txt` — Flask 3.1.3, Flask-CORS 6.0.0, cryptography 49.0.0, Werkzeug 3.1.6, python-dotenv 1.2.2, filelock 3.20.3 | H1 |
 | 2026-08-19 | Updated `backend/app.py` — host binding now uses `127.0.0.1` in dev, `0.0.0.0` only in production | H4 |
+| 2026-08-19 | Removed debug `print()` statements from `backend/config.py` | H2 |
