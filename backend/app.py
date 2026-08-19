@@ -110,4 +110,7 @@ app = create_app()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=not config.IS_PRODUCTION)
+    # In production, bind to 0.0.0.0 (behind reverse proxy). In development,
+    # bind to 127.0.0.1 to avoid exposing the dev server to the network.
+    host = os.environ.get("HOST", "127.0.0.1" if not config.IS_PRODUCTION else "0.0.0.0")
+    app.run(host=host, port=port, debug=not config.IS_PRODUCTION)
