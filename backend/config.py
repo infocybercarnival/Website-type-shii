@@ -61,14 +61,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 from urllib.parse import urlparse
 
 _db_debug = urlparse(SQLALCHEMY_DATABASE_URI)
-print("=== DB DEBUG ===")
-print("DB scheme:", _db_debug.scheme)
-print("DB host:", _db_debug.hostname)
-print("DB port:", _db_debug.port)
-print("DB user:", _db_debug.username)
-print("DB name:", _db_debug.path)
-print("DB password present:", bool(_db_debug.password))
-print("================")
+
 # --- Email (OTP delivery) -----------------------------------------------------
 # EMAIL_DEV_MODE=true logs the email instead of sending it — lets the OTP flow
 # be exercised locally with no real SMTP credentials configured.
