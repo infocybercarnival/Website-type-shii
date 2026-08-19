@@ -13,19 +13,20 @@
 |----------|-------|------|-------|
 | 🔴 **CRITICAL** | 2 | 1 | 1 |
 | 🟠 **HIGH** | 4 | 1 | 3 |
-| 🟡 **MEDIUM** | 6 | 6 | 0 |
+| 🟡 **MEDIUM** | 6 | 5 | 1 |
 | 🔵 **LOW / Informational** | 5 | 0 | 5 |
 
-The codebase demonstrates **good security fundamentals** — proper password hashing (scrypt), CSRF protection, rate limiting, input validation, XSS escaping in admin JS, and security headers. Three high-severity issues and one critical issue have been remediated. Remaining items should be addressed before production launch.
+The codebase demonstrates **good security fundamentals** — proper password hashing (scrypt), CSRF protection, rate limiting, input validation, XSS escaping in admin JS, and security headers. Three high-severity issues, one medium issue, and one critical issue have been remediated. Remaining items should be addressed before production launch.
 
 ---
 
 ## 🔴 CRITICAL Findings
 
 ### C1 — Production Secrets Committed to Public Repo ✅ FIXED (partial)
-**File:** `backend/.env.render` (deleted from repo)
+**File:** `backend/.env.render` (deleted from repo)  
+**Fixed:** 2026-08-19 — Files removed from repository. `.env.render` added to `.gitignore`. Unused `_db_debug` code removed from `config.py`.
 
-**Status:** Files removed from repository on 2026-08-19. ⚠️ **Still exposed in git history** — purge with BFG Repo Cleaner or `git filter-branch` before production launch.
+⚠️ **Still exposed in git history** — purge with `git filter-repo` before production launch.
 
 **Remaining action:** Rotate SECRET_KEY + SMTP password, purge git history.
 
@@ -127,18 +128,18 @@ app.run(host=host, port=port, debug=not config.IS_PRODUCTION)
 
 ---
 
-### M2 — Admin Password Minimum Length is Only 3 Characters
-**File:** `backend/seed_admin.py` line 38
+### M2 — Admin Password Minimum Length is Only 3 Characters ✅ FIXED
+**File:** `backend/seed_admin.py`  
+**Fixed:** 2026-08-19 — Minimum password length increased from 3 to 12 characters.
 
 ```python
+# Before:
 if len(password) < 3:
-```
+    print("Refusing to create an admin with a password under 3 characters.")
 
-A 3-character admin password is trivially brute-forceable.
-
-**Fix:** Require minimum 12 characters for admin accounts:
-```python
+# After:
 if len(password) < 12:
+    print("Refusing to create an admin with a password under 12 characters.")
 ```
 
 ---
@@ -234,8 +235,9 @@ The codebase has several strong security practices:
 | 🟠 P1 | ~~Remove debug DB logging from `config.py`~~ | Backend | ✅ Done |
 | 🟠 P1 | Replace `repr(e)` with generic error in auth routes | Backend | ⏳ Pending |
 | 🟠 P1 | ~~Fix host binding to use 127.0.0.1 in development~~ | Backend | ✅ Done |
-| 🟡 P2 | Increase admin password minimum to 12 chars | Backend | ⏳ Pending |
+| 🟡 P2 | ~~Increase admin password minimum to 12 chars~~ | Backend | ✅ Done |
 | 🟡 P2 | Switch rate limiter to Redis in production | DevOps | ⏳ Pending |
+| 🟡 P2 | ~~Add `.env.render` to `.gitignore`~~ | Backend | ✅ Done |
 
 ---
 
@@ -258,3 +260,6 @@ The codebase has several strong security practices:
 | 2026-08-19 | Updated `backend/requirements.txt` — Flask 3.1.3, Flask-CORS 6.0.0, cryptography 49.0.0, Werkzeug 3.1.6, python-dotenv 1.2.2, filelock 3.20.3 | H1 |
 | 2026-08-19 | Updated `backend/app.py` — host binding now uses `127.0.0.1` in dev, `0.0.0.0` only in production | H4 |
 | 2026-08-19 | Removed debug `print()` statements from `backend/config.py` | H2 |
+| 2026-08-19 | Increased admin password minimum from 3 to 12 chars in `backend/seed_admin.py` | M2 |
+| 2026-08-19 | Added `.env.render` to `backend/.gitignore` | C1 (partial) |
+| 2026-08-19 | Removed unused `_db_debug` code from `backend/config.py` | C1 (partial) |

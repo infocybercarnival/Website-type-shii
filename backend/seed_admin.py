@@ -21,8 +21,8 @@ if __name__ == "__main__":
         print("Username and password are required.")
         sys.exit(1)
 
-    if len(password) < 3:
-        print("Refusing to create an admin with a password under 3 characters.")
+    if len(password) < 12:
+        print("Refusing to create an admin with a password under 12 characters.")
         sys.exit(1)
 
     with app.app_context():
