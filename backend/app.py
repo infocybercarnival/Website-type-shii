@@ -47,12 +47,18 @@ def create_app() -> Flask:
     # origins in ALLOWED_ORIGINS, never "*" (the browser refuses credentialed
     # requests against a wildcard origin anyway). Admin routes are NOT
     # included here — they're same-origin, cookie-authenticated only.
-    CORS(
-        app,
-        resources={r"/api/*": {"origins": config.ALLOWED_ORIGINS or []}},
-        supports_credentials=True,
-        methods=["GET", "POST", "PUT", "DELETE"],
-    )
+  CORS(
+    app,
+    resources={
+        r"/api/*": {
+            "origins": [
+                "https://www.cybercarnival.in",
+                "https://cybercarnival.in"
+            ]
+        }
+    },
+    supports_credentials=True
+)
 
     app.register_blueprint(health_bp)
     app.register_blueprint(events_bp)
