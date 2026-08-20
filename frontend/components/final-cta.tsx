@@ -57,7 +57,7 @@ export function FinalCta() {
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 font-mono text-[10px] tracking-[0.25em] text-muted-foreground lg:flex-row lg:items-center lg:justify-between lg:px-10">
           <p>CYBERCARNIVAL 2026 — SRM RAMAPURAM</p>
           <p>WHERE CYBERSECURITY MEETS INNOVATION</p>
-          <p>14 AUGUST 2026</p>
+          <p>7&8 OCTOBER</p>
         </div>
       </footer>
     </section>
