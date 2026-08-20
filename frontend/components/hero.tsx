@@ -70,7 +70,7 @@ export function Hero() {
         <div className="flex flex-1 items-center justify-center">
           <h1 className="text-center font-sans font-bold leading-[0.85] tracking-tight text-foreground [text-shadow:0_0_60px_rgba(10,10,15,0.9)]">
             <span className="block text-[clamp(3.8rem,13vw,11.5rem)]">CYBER</span>
-            <span className="block text-[clamp(3.8rem,13vw,11.5rem)]">CARNIVAL</span>
+            <span className="block text-[clamp(3.8rem,13vw,11.5rem)]">CARNIVAL'26</span>
           </h1>
         </div>
 
@@ -83,7 +83,7 @@ export function Hero() {
               MEETS INNOVATION
             </p>
             <p className="mt-4 font-mono text-[11px] tracking-[0.3em] text-muted-foreground">
-              14 AUGUST 2026
+              7&8 OCTOBER | SRM RAMAPURAM
             </p>
           </div>
 
