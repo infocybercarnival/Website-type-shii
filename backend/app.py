@@ -18,6 +18,7 @@ from routes.admin_pages import bp as admin_pages_bp
 from routes.admin_api import bp as admin_api_bp
 from routes.frontend import bp as frontend_bp
 
+
 logger = get_logger("app")
 
 
@@ -29,36 +30,37 @@ def create_app() -> Flask:
     app.config["SESSION_COOKIE_SECURE"] = config.SESSION_COOKIE_SECURE
     app.config["SESSION_COOKIE_HTTPONLY"] = config.SESSION_COOKIE_HTTPONLY
     app.config["SESSION_COOKIE_SAMESITE"] = config.SESSION_COOKIE_SAMESITE
-    app.config["PERMANENT_SESSION_LIFETIME"] = config.PERMANENT_SESSION_LIFETIME_SECONDS
+    app.config["PERMANENT_SESSION_LIFETIME"] = (
+        config.PERMANENT_SESSION_LIFETIME_SECONDS
+    )
     app.config["SQLALCHEMY_DATABASE_URI"] = config.SQLALCHEMY_DATABASE_URI
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = config.SQLALCHEMY_TRACK_MODIFICATIONS
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = (
+        config.SQLALCHEMY_TRACK_MODIFICATIONS
+    )
 
     limiter.init_app(app)
     csrf.init_app(app)
     db.init_app(app)
 
     with app.app_context():
-        import models  # noqa: F401 — register models on db.metadata before create_all
+        import models  # noqa: F401
         db.create_all()
 
     # Public API is meant to be called cross-origin from the marketing frontend.
-    # /api/auth/* and /api/registrations now set a session cookie (participant
-    # login), so credentials are enabled here — but only for the explicit
-    # origins in ALLOWED_ORIGINS, never "*" (the browser refuses credentialed
-    # requests against a wildcard origin anyway). Admin routes are NOT
-    # included here — they're same-origin, cookie-authenticated only.
-  CORS(
-    app,
-    resources={
-        r"/api/*": {
-            "origins": [
-                "https://www.cybercarnival.in",
-                "https://cybercarnival.in"
-            ]
-        }
-    },
-    supports_credentials=True
-)
+    # /api/auth/* and /api/registrations use session cookies, so credentials
+    # are enabled only for the explicitly allowed frontend origins.
+    CORS(
+        app,
+        resources={
+            r"/api/*": {
+                "origins": [
+                    "https://www.cybercarnival.in",
+                    "https://cybercarnival.in",
+                ]
+            }
+        },
+        supports_credentials=True,
+    )
 
     app.register_blueprint(health_bp)
     app.register_blueprint(events_bp)
@@ -69,12 +71,10 @@ def create_app() -> Flask:
     app.register_blueprint(admin_api_bp)
     app.register_blueprint(frontend_bp)  # catch-all — must stay last
 
-    # These public endpoints are called by client-side JS on a different origin
-    # (the Next.js frontend) than the one rendering CSRF tokens (the admin
-    # panel), so they can't carry a Flask-WTF form token. Real protection here
-    # is: SameSite=Lax cookies (never sent on a cross-site simple POST),
-    # strict CORS origin allow-listing for the credentialed requests that do
-    # carry the session cookie, and per-route rate limiting.
+    # These public endpoints are called by client-side JS on a different
+    # origin than the admin panel, so they cannot carry a Flask-WTF CSRF token.
+    # Protection is provided by SameSite cookies, strict CORS origin
+    # allow-listing, and per-route rate limiting.
     csrf.exempt(registration_bp)
     csrf.exempt(auth_bp)
 
@@ -82,12 +82,15 @@ def create_app() -> Flask:
     def uploaded_poster(filename):
         # Extra safety net on top of secure_filename() at upload time.
         target = (config.UPLOAD_DIR / filename).resolve()
+
         try:
             target.relative_to(config.UPLOAD_DIR.resolve())
         except ValueError:
             abort(404)
+
         if not target.is_file():
             abort(404)
+
         return send_from_directory(config.UPLOAD_DIR, filename)
 
     app.after_request(add_security_headers)
@@ -114,9 +117,17 @@ def create_app() -> Flask:
 
 app = create_app()
 
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    # In production, bind to 0.0.0.0 (behind reverse proxy). In development,
-    # bind to 127.0.0.1 to avoid exposing the dev server to the network.
-    host = os.environ.get("HOST", "127.0.0.1" if not config.IS_PRODUCTION else "0.0.0.0")
-    app.run(host=host, port=port, debug=not config.IS_PRODUCTION)
+
+    host = os.environ.get(
+        "HOST",
+        "127.0.0.1" if not config.IS_PRODUCTION else "0.0.0.0",
+    )
+
+    app.run(
+        host=host,
+        port=port,
+        debug=not config.IS_PRODUCTION,
+    )
